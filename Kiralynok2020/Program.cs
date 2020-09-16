@@ -28,7 +28,23 @@ namespace Kiralynok2020
                 }
             }
 
-            public void Elhelyez() { }
+            public void Elhelyez(int N)
+            {
+                // 1. Véletlen helyérték létrehozása
+                //    - Random osztály értékkészlet:[0,7]
+                //    - véletlen sor, oszlop kell
+                //    - elhelyezzük a "K"-t csak akkor 
+                //              HA!!!! üres -> "#"
+
+                Random vel = new Random();
+                int sor = vel.Next(0, 8);
+                int oszlop = vel.Next(0, 8);
+                if (T[sor, oszlop] == '#')
+                {
+                    T[sor, oszlop] = 'K';
+                }
+            }
+
             public void FajbaIr() { }
             public void Megjelenit()
             {
@@ -52,7 +68,9 @@ namespace Kiralynok2020
 
             Console.WriteLine("Üres tábla:");
             t.Megjelenit();
-
+            t.Elhelyez(1);
+            Console.WriteLine();
+            t.Megjelenit();
 
             Console.ReadKey();
         }
