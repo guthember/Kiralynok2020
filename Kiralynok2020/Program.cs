@@ -30,13 +30,29 @@ namespace Kiralynok2020
 
             public void Elhelyez() { }
             public void FajbaIr() { }
-            public void Megjelenit() { }
+            public void Megjelenit()
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        Console.Write($"{T[i,j]} ");
+                    }
+                    Console.WriteLine();
+                }
+            }
             public int UresOszlop() { return 0; }
             public int UresSor() { return 0; }
         }
         static void Main(string[] args)
         {
             Console.WriteLine("Királynők feladat");
+
+            Tabla t = new Tabla('#');
+
+            Console.WriteLine("Üres tábla:");
+            t.Megjelenit();
+
 
             Console.ReadKey();
         }
