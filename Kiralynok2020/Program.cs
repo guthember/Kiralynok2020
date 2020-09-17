@@ -67,8 +67,44 @@ namespace Kiralynok2020
                     Console.WriteLine();
                 }
             }
-            public int UresOszlop() { return 0; }
-            public int UresSor() { return 0; }
+            public bool UresOszlop(int oszlop)
+            {
+                int i = 0;
+
+                while (i < 8 && T[i, oszlop] != 'K')
+                {
+                    i++;
+                }
+
+                if (i < 8)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+
+            }
+            public bool UresSor(int sor)
+            {
+                int i = 0;
+
+                while (i < 8 && T[sor, i] != 'K')
+                {
+                    i++;
+                }
+
+                if (i < 8)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
         static void Main(string[] args)
         {
@@ -81,6 +117,19 @@ namespace Kiralynok2020
             t.Elhelyez(8);
             Console.WriteLine();
             t.Megjelenit();
+
+            Console.Write("Melyik sor: ");
+            int sor = int.Parse(Console.ReadLine());
+
+            if (t.UresSor(sor))
+            {
+                Console.WriteLine("A megadott sor üres.");
+            }
+            else
+            {
+                Console.WriteLine("A megadott sor nem üres.");
+            }
+
 
             Console.ReadKey();
         }
