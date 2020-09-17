@@ -37,12 +37,22 @@ namespace Kiralynok2020
                 //              HA!!!! üres -> "#"
 
                 Random vel = new Random();
-                int sor = vel.Next(0, 8);
-                int oszlop = vel.Next(0, 8);
-                if (T[sor, oszlop] == '#')
+                
+                for (int i = 0; i < N; i++)
                 {
-                    T[sor, oszlop] = 'K';
+                    bool igaz = true;
+                    while (igaz)
+                    {
+                        int sor = vel.Next(0, 8);
+                        int oszlop = vel.Next(0, 8);
+                        if (T[sor, oszlop] == '#')
+                        {
+                            T[sor, oszlop] = 'K';
+                            igaz = false;
+                        }
+                    }
                 }
+
             }
 
             public void FajbaIr() { }
@@ -68,7 +78,7 @@ namespace Kiralynok2020
 
             Console.WriteLine("Üres tábla:");
             t.Megjelenit();
-            t.Elhelyez(1);
+            t.Elhelyez(8);
             Console.WriteLine();
             t.Megjelenit();
 
