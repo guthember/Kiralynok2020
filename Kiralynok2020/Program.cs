@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,7 +47,7 @@ namespace Kiralynok2020
                     {
                         int sor = vel.Next(0, 8);
                         int oszlop = vel.Next(0, 8);
-                        if (T[sor, oszlop] == '#')
+                        if (T[sor, oszlop] == UresCella)
                         {
                             T[sor, oszlop] = 'K';
                             igaz = false;
@@ -55,7 +57,18 @@ namespace Kiralynok2020
 
             }
 
-            public void FajbaIr() { }
+            public void FajbaIr(StreamWriter fajl) {
+                //fajl.WriteLine("ez egy szöveg");
+                for (int i = 0; i < 8; i++)
+                {
+                    string sor = "";
+                    for (int j = 0; j < 8; j++)
+                    {
+                        sor += T[i, j];
+                    }
+                    fajl.WriteLine(sor);
+                }
+            }
             
             public void Megjelenit()
             {
@@ -89,6 +102,7 @@ namespace Kiralynok2020
 
 
             }
+            
             public bool UresSor(int sor)
             {
                 int i = 0;
@@ -108,11 +122,18 @@ namespace Kiralynok2020
                 }
             }
         }
+        
         static void Main(string[] args)
         {
             Console.WriteLine("Királynők feladat");
 
             Tabla t = new Tabla('#');
+            Tabla[] tablak = new Tabla[64];
+
+            
+
+
+
 
             Console.WriteLine("Üres tábla:");
             t.Megjelenit();
@@ -139,6 +160,24 @@ namespace Kiralynok2020
             }
             Console.WriteLine("Oszlopok: {0}",uresOszlop);
             Console.WriteLine("Sorok: {0}", uresSor);
+
+            
+            StreamWriter ki = new StreamWriter("adatok.txt");
+
+            for (int i = 0; i < 64; i++)
+            {
+                tablak[i] = new Tabla('*');
+            }
+
+            for (int i = 0; i < 64; i++)
+            {
+                tablak[i].Elhelyez(i + 1);
+                tablak[i].FajbaIr(ki);
+                ki.WriteLine();
+            }
+         
+            ki.Close();
+
 
             Console.ReadKey();
         }
