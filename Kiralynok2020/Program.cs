@@ -56,6 +56,7 @@ namespace Kiralynok2020
             }
 
             public void FajbaIr() { }
+            
             public void Megjelenit()
             {
                 for (int i = 0; i < 8; i++)
@@ -67,6 +68,7 @@ namespace Kiralynok2020
                     Console.WriteLine();
                 }
             }
+            
             public bool UresOszlop(int oszlop)
             {
                 int i = 0;
@@ -118,18 +120,25 @@ namespace Kiralynok2020
             Console.WriteLine();
             t.Megjelenit();
 
-            Console.Write("Melyik sor: ");
-            int sor = int.Parse(Console.ReadLine());
+            Console.WriteLine("8. feladat: Az üres oszlopok és sorok száma:");
 
-            if (t.UresSor(sor))
-            {
-                Console.WriteLine("A megadott sor üres.");
-            }
-            else
-            {
-                Console.WriteLine("A megadott sor nem üres.");
-            }
+            int uresSor = 0;
+            int uresOszlop = 0;
 
+            for (int i = 0; i < 8; i++)
+            {
+                if (t.UresOszlop(i))
+                {
+                    uresOszlop++;
+                }
+
+                if (t.UresSor(i))
+                {
+                    uresSor++;
+                }
+            }
+            Console.WriteLine("Oszlopok: {0}",uresOszlop);
+            Console.WriteLine("Sorok: {0}", uresSor);
 
             Console.ReadKey();
         }
