@@ -38,7 +38,7 @@ namespace Kiralynok2020
                 //    - elhelyezzük a "K"-t csak akkor 
                 //              HA!!!! üres -> "#"
 
-                Random vel = new Random();
+                Random vel = new Random(Guid.NewGuid().GetHashCode());
                 
                 for (int i = 0; i < N; i++)
                 {
